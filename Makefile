@@ -1,6 +1,9 @@
-MODULES = pg_skiplist
-EXTENSION = pg_skiplist
-DATA = pg_skiplist--1.0.sql
-PG_CONFIG = pg_config
-PGXS := $(shell $(PG_CONFIG) --pgxs)
-include $(PGXS)
+FROM postgres:18.6
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends build-essential postgresql-server-dev-18 && \
+    rm -rf /var/lib/apt/lists/*
+
+WORKDIR /usr/src/pg_skiplist
+COPY . .
+RUN make && make install
