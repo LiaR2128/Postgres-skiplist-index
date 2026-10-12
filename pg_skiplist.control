@@ -1,0 +1,4 @@
+comment = 'Extension academica de Skip List para PostgreSQL'
+default_version = '1.0'
+module_pathname = '$libdir/pg_skiplist'
+relocatable = true
